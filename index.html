@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jardín de Infantes Niño Jesús – Saladillo</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2d6e3e;
+    --verde-claro: #3a8c50;
+    --verde-suave: #e8f5ec;
+    --azul: #1a3a5c;
+    --azul-claro: #2a5a8c;
+    --azul-suave: #e8eef5;
+    --amarillo: #f5c842;
+    --amarillo-suave: #fff8dc;
+    --blanco: #ffffff;
+    --gris-suave: #f7f9f7;
+    --texto: #2c3e2d;
+    --texto-claro: #5a7a5c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--texto);
+    background: var(--blanco);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--verde);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 2px 20px rgba(45,110,62,0.15);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    width: 44px; height: 44px;
+    object-fit: contain;
+  }
+
+  .nav-logo .brand {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--azul); line-height: 1.2;
+  }
+
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+
+  .nav-links a {
+    text-decoration: none; color: var(--azul);
+    font-weight: 700; font-size: 0.88rem;
+    transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute;
+    bottom: -3px; left: 0; right: 0; height: 2px;
+    background: var(--verde);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--verde); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: var(--verde) !important;
+    color: white !important;
+    padding: 8px 18px; border-radius: 50px;
+    font-weight: 800 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--verde-claro) !important; transform: translateY(-1px); }
+  .nav-cta::after { display: none !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 45%, var(--verde) 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 100px 2rem 5rem;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(245,200,66,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+  }
+
+  .bubbles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .bubble {
+    position: absolute; border-radius: 50%;
+    opacity: 0.07; animation: floatBubble 7s ease-in-out infinite;
+  }
+  .b1 { width:280px;height:280px; background:var(--amarillo); top:-80px; left:-80px; animation-delay:0s; }
+  .b2 { width:180px;height:180px; background:white; bottom:-40px; right:-40px; animation-delay:2.5s; }
+  .b3 { width:120px;height:120px; background:var(--amarillo); bottom:25%; left:5%; animation-delay:4s; }
+  .b4 { width:90px;height:90px; background:white; top:22%; right:8%; animation-delay:1.2s; }
+
+  @keyframes floatBubble {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-22px) scale(1.04); }
+  }
+
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star {
+    position: absolute; color: rgba(255,255,255,0.35);
+    font-size: 1.1rem; animation: twinkle 3.5s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.4); }
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: var(--amarillo);
+    border: 2px solid rgba(245,200,66,0.35);
+    padding: 6px 20px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 800;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .hero-shield-wrap {
+    width: 115px; height: 115px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    animation: fadeDown 0.55s ease both;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+  }
+
+  .hero-shield-wrap img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 800; color: white;
+    line-height: 1.1; margin-bottom: 0.5rem;
+    animation: fadeDown 0.65s ease 0.1s both;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+  .hero h1 .accent { color: var(--amarillo); }
+
+  .hero .subtitle {
+    font-size: clamp(0.95rem, 2.4vw, 1.2rem);
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.5rem; font-weight: 600;
+    animation: fadeDown 0.65s ease 0.18s both;
+  }
+
+  .hero-desde {
+    display: inline-block;
+    background: var(--amarillo); color: var(--azul);
+    font-weight: 900; font-size: 0.82rem;
+    padding: 4px 14px; border-radius: 50px;
+    margin-bottom: 2rem;
+    animation: fadeDown 0.65s ease 0.25s both;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1rem;
+    justify-content: center; flex-wrap: wrap;
+    animation: fadeDown 0.65s ease 0.32s both;
+  }
+
+  .btn-primary {
+    background: var(--amarillo); color: var(--azul);
+    padding: 13px 30px; border-radius: 50px;
+    font-weight: 900; font-size: 0.98rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(245,200,66,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(245,200,66,0.5); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.14); color: white;
+    padding: 13px 30px; border-radius: 50px;
+    font-weight: 800; font-size: 0.98rem;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.24); transform: translateY(-2px); }
+
+  .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* STATS */
+  .stats-bar { background: var(--verde); padding: 1.4rem 2rem; }
+  .stats-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; justify-content: space-around;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .stat { text-align: center; color: white; }
+  .stat-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem; font-weight: 800;
+    color: var(--amarillo);
+    display: block; line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; font-weight: 700; opacity: 0.88; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--verde-suave); color: var(--verde);
+    font-weight: 800; font-size: 0.74rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 50px;
+    margin-bottom: 0.7rem;
+    border: 1.5px solid rgba(45,110,62,0.2);
+  }
+
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    font-weight: 800; color: var(--azul);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-title .verde { color: var(--verde); }
+  .section-lead { font-size: 1.05rem; color: var(--texto-claro); line-height: 1.7; max-width: 640px; }
+
+  /* NOSOTROS */
+  .nosotros { background: var(--gris-suave); }
+
+  .nosotros-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start; margin-top: 3rem;
+  }
+
+  .building-card {
+    background: white; border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(26,58,92,0.12);
+    border: 3px solid var(--verde-suave);
+  }
+
+  .building-facade {
+    background: linear-gradient(160deg, #c9aa83, #b8956e);
+    height: 200px;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 0; position: relative; overflow: hidden;
+  }
+
+  .facade-bricks {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 14px,
+      rgba(0,0,0,0.05) 14px, rgba(0,0,0,0.05) 15px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 28px,
+      rgba(0,0,0,0.04) 28px, rgba(0,0,0,0.04) 29px
+    );
+  }
+
+  .facade-scene {
+    position: relative; z-index: 1;
+    display: flex; align-items: flex-end; gap: 20px;
+    padding-bottom: 0;
+  }
+
+  .fwin {
+    width: 38px; height: 60px;
+    background: #b8cce0; border-radius: 4px;
+    border: 2px solid #8aaccc; opacity: 0.75;
+    margin-bottom: 10px;
+  }
+
+  .farch {
+    width: 68px; height: 110px;
+    background: #5a3a1a;
+    border-radius: 34px 34px 0 0;
+    box-shadow: inset 0 -12px 24px rgba(0,0,0,0.35);
+    position: relative;
+  }
+
+  .building-card-footer {
+    padding: 1.1rem 1.4rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .pin-circle {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--verde-suave);
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+
+  .building-card-footer p { font-weight: 700; color: var(--azul); font-size: 0.88rem; line-height: 1.4; }
+
+  .history-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .history-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+  .history-year {
+    background: var(--azul); color: var(--amarillo);
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: 0.78rem; padding: 4px 10px;
+    border-radius: 8px; flex-shrink: 0; margin-top: 3px;
+  }
+
+  .history-desc { font-size: 0.92rem; color: var(--texto-claro); line-height: 1.6; }
+
+  .nosotros-text { display: flex; flex-direction: column; gap: 1.4rem; }
+
+  .info-chips { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .chip {
+    background: var(--verde-suave); border-radius: 14px;
+    padding: 0.9rem 1.2rem; flex: 1; min-width: 130px;
+  }
+  .chip.blue { background: var(--azul-suave); }
+  .chip-icon { font-size: 1.4rem; margin-bottom: 3px; }
+  .chip strong { display: block; color: var(--azul); font-size: 0.82rem; font-weight: 800; }
+  .chip small { color: var(--texto-claro); font-size: 0.77rem; }
+
+  /* MISIÓN VISIÓN */
+  .mision-vision {
+    background: var(--azul); position: relative; overflow: hidden;
+  }
+  .mision-vision::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(45,110,62,0.3) 0%, transparent 60%);
+  }
+
+  .mv-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 3rem; position: relative;
+  }
+
+  .mv-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 20px; padding: 2rem;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .mv-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); }
+
+  .mv-icon {
+    width: 50px; height: 50px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+  }
+  .mv-icon.g { background: rgba(45,110,62,0.3); }
+  .mv-icon.y { background: rgba(245,200,66,0.18); }
+
+  .mv-card h3 {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: 1.25rem; color: var(--amarillo); margin-bottom: 0.7rem;
+  }
+  .mv-card p { color: rgba(255,255,255,0.82); line-height: 1.7; font-size: 0.93rem; }
+
+  /* PROPUESTA */
+  .propuesta { background: var(--gris-suave); }
+
+  .propuesta-intro { text-align: center; margin-bottom: 3rem; }
+
+  .materias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .materia-card {
+    background: white; border-radius: 18px;
+    padding: 1.5rem 1.2rem; text-align: center;
+    border: 2px solid transparent;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  }
+  .materia-card:hover {
+    border-color: var(--verde); transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(45,110,62,0.14);
+  }
+  .materia-card .emoji { font-size: 2rem; display: block; margin-bottom: 0.4rem; }
+  .materia-card h4 {
+    font-family: 'Baloo 2', cursive; font-weight: 700;
+    color: var(--azul); font-size: 0.98rem; margin-bottom: 0.2rem;
+  }
+  .materia-card p { font-size: 0.79rem; color: var(--texto-claro); line-height: 1.45; }
+
+  .ingles-banner {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+    border-radius: 20px; padding: 1.8rem 2rem;
+    color: white; display: flex; gap: 1.5rem;
+    align-items: center; flex-wrap: wrap;
+  }
+  .ingles-banner h3 {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    color: var(--amarillo); margin-bottom: 0.3rem;
+  }
+  .ingles-banner p { opacity: 0.85; font-size: 0.93rem; }
+
+  /* VALORES */
+  .valores { background: white; }
+
+  .valores-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem; margin-top: 3rem;
+  }
+
+  .valor-card {
+    background: var(--gris-suave);
+    border-radius: 18px; padding: 1.6rem 1.4rem;
+    border-left: 4px solid var(--verde);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .valor-card:nth-child(even) { border-left-color: var(--azul); background: var(--azul-suave); }
+  .valor-card:hover { transform: translateX(4px); box-shadow: 0 6px 22px rgba(0,0,0,0.08); }
+
+  .valor-card h4 {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    color: var(--azul); margin-bottom: 0.4rem; font-size: 1rem;
+  }
+  .valor-card p { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* EQUIPO */
+  .equipo {
+    background: linear-gradient(135deg, var(--verde-suave), var(--azul-suave));
+    text-align: center;
+  }
+  .equipo .section-lead { margin: 0 auto; }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .rol-card {
+    background: white; border-radius: 16px;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--verde);
+    transition: transform 0.2s;
+  }
+  .rol-card:hover { transform: translateY(-3px); }
+  .rol-num {
+    font-family: 'Baloo 2', cursive; font-size: 1.9rem;
+    font-weight: 800; color: var(--verde);
+    display: block; line-height: 1;
+  }
+  .rol-name { font-weight: 700; font-size: 0.82rem; color: var(--azul); margin-top: 0.2rem; }
+
+  /* SECCIONES */
+  .secciones { background: white; }
+
+  .salas-wrap {
+    display: flex; gap: 1.2rem;
+    justify-content: center; flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  .sala {
+    background: white; border: 3px solid var(--verde);
+    border-radius: 20px; padding: 1.6rem 2.2rem;
+    text-align: center; min-width: 155px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    cursor: default;
+  }
+  .sala:hover { background: var(--verde); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(45,110,62,0.25); }
+  .sala:hover .sala-num, .sala:hover .sala-label, .sala:hover .sala-sub { color: white !important; }
+
+  .sala-num {
+    font-family: 'Baloo 2', cursive; font-size: 2.6rem;
+    font-weight: 900; color: var(--verde);
+    display: block; line-height: 1;
+    transition: color 0.3s;
+  }
+  .sala-label { font-weight: 700; color: var(--azul); font-size: 0.88rem; transition: color 0.3s; }
+  .sala-sub { font-size: 0.74rem; color: var(--texto-claro); margin-top: 3px; transition: color 0.3s; }
+
+  .sala.azul { border-color: var(--azul); }
+  .sala.azul:hover { background: var(--azul); }
+  .sala.azul .sala-num { color: var(--azul); }
+
+  .sala.gold { border-color: #c8a000; }
+  .sala.gold:hover { background: #c8a000; }
+  .sala.gold .sala-num { color: #c8a000; }
+
+  /* CONTACTO */
+  .contacto {
+    background: var(--azul); text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .contacto::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(45,110,62,0.38) 0%, transparent 55%);
+  }
+  .contacto .section-tag {
+    background: rgba(245,200,66,0.18);
+    color: var(--amarillo); border-color: rgba(245,200,66,0.3);
+  }
+  .contacto .section-title { color: white; }
+  .contacto .section-lead { color: rgba(255,255,255,0.72); margin: 0 auto 3rem; }
+
+  .contact-cards {
+    display: flex; flex-wrap: wrap; gap: 1.2rem;
+    justify-content: center; position: relative; margin-bottom: 2.5rem;
+  }
+
+  .contact-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px; padding: 1.4rem 1.8rem;
+    min-width: 190px; text-align: center;
+    color: white; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
+  .contact-card .c-icon { font-size: 1.7rem; display: block; margin-bottom: 0.45rem; }
+  .contact-card strong {
+    display: block; font-weight: 800;
+    font-size: 0.78rem; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--amarillo); margin-bottom: 3px;
+  }
+  .contact-card span { font-size: 0.88rem; opacity: 0.82; }
+
+  .ig-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white; padding: 13px 30px; border-radius: 50px;
+    font-weight: 800; font-size: 0.98rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 22px rgba(220,39,67,0.4);
+    position: relative;
+  }
+  .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(220,39,67,0.5); }
+
+  /* FOOTER */
+  footer {
+    background: #0e2238;
+    color: rgba(255,255,255,0.55);
+    text-align: center; padding: 2rem;
+    font-size: 0.83rem; line-height: 1.9;
+  }
+  footer strong { color: rgba(255,255,255,0.88); }
+  footer .sep { margin: 0 0.5rem; opacity: 0.3; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── INSTAGRAM SECTION ── */
+  .instagram-section { background: var(--gris-suave); }
+
+  .ig-gradient {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ig-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .ig-post {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .ig-post:hover { transform: scale(1.03); box-shadow: 0 10px 32px rgba(0,0,0,0.18); }
+
+  .ig-post-bg {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    transition: filter 0.3s;
+  }
+  .ig-post:hover .ig-post-bg { filter: brightness(0.65); }
+
+  .ig-post-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+    background: rgba(0,0,0,0.2);
+  }
+  .ig-post:hover .ig-post-overlay { opacity: 1; }
+  .ig-post-overlay span {
+    color: white; font-weight: 800; font-size: 0.85rem;
+    background: rgba(0,0,0,0.45); padding: 6px 14px; border-radius: 50px;
+  }
+
+  .ig-widget-wrap {
+    min-height: 200px;
+    position: relative;
+  }
+
+  /* Estilos para el aviso de configuración */
+  .ig-setup-notice {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .ig-setup-inner {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 2px dashed #e0e0e0;
+  }
+
+  .ig-setup-inner h4 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800; font-size: 1.3rem;
+    color: var(--azul); margin-bottom: 0.5rem;
+  }
+
+  .ig-setup-inner p {
+    color: var(--texto-claro); font-size: 0.9rem;
+    margin-bottom: 1rem; line-height: 1.6;
+  }
+
+  .ig-setup-inner ol {
+    text-align: left; margin: 0.75rem auto 0;
+    max-width: 340px; padding-left: 1.2rem;
+    color: var(--texto-claro); font-size: 0.88rem;
+    line-height: 2;
+  }
+
+  .ig-setup-inner a:not(.ig-follow-btn) { color: var(--verde); font-weight: 700; }
+
+  .ig-setup-inner code {
+    background: var(--gris-suave);
+    padding: 2px 7px; border-radius: 6px;
+    font-size: 0.82rem; color: var(--azul);
+  }
+
+  /* Estilos para que el widget de Behold se vea bien */
+  behold-widget {
+    display: block;
+    width: 100%;
+  }
+
+
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white; padding: 13px 28px; border-radius: 50px;
+    font-weight: 800; font-size: 0.95rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 20px rgba(188,24,136,0.35);
+  }
+  .ig-follow-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(188,24,136,0.45); }
+
+  /* ── FORMULARIO ── */
+  .form-wrap {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .form-header h3 {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: 1.3rem; color: var(--amarillo); margin-bottom: 0.3rem;
+  }
+  .form-header p { color: rgba(255,255,255,0.65); font-size: 0.88rem; }
+
+  .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+  align-items: start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  min-height: 2.2rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.93rem;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--amarillo);
+    background: rgba(255,255,255,0.15);
+  }
+
+  .form-group select option { background: var(--azul); color: white; }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-row { margin-bottom: 0; }
+  .form-row .form-group { margin-bottom: 0; }
+
+  .form-footer-row {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap;
+    gap: 1rem; margin-top: 1.5rem;
+  }
+
+  .form-note {
+    font-size: 0.78rem; color: rgba(255,255,255,0.5);
+    max-width: 380px; line-height: 1.5;
+  }
+  .form-note strong { color: rgba(255,255,255,0.75); }
+
+  .form-submit {
+    background: var(--amarillo); color: var(--azul);
+    border: none; border-radius: 50px;
+    padding: 13px 30px; font-weight: 900;
+    font-size: 0.98rem; font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 18px rgba(245,200,66,0.4);
+    white-space: nowrap;
+  }
+  .form-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,200,66,0.5); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-success {
+    display: none; flex-direction: column;
+    align-items: center; text-align: center;
+    padding: 3rem 1rem; gap: 0.75rem;
+  }
+  .success-icon { font-size: 3.5rem; }
+  .form-success h4 {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: 1.5rem; color: var(--amarillo);
+  }
+  .form-success p { color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 420px; }
+
+  .form-error {
+    display: none; margin-top: 1rem;
+    background: rgba(220,50,50,0.18);
+    border: 1px solid rgba(220,50,50,0.4);
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+    color: #ffaaaa; font-size: 0.88rem;
+  }
+  .form-error a { color: var(--amarillo); }
+
+  /* update nav link for instagram */
+  .nav-links .ig-nav { color: #c13584 !important; }
+
+  /* ── FOTO PLACEHOLDERS ── */
+  .foto-placeholder {
+    position: relative; overflow: hidden;
+    background: #dce8f0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; text-align: center;
+    border: 2.5px dashed #a0b8d0;
+  }
+  .foto-placeholder img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center center;
+    display: block;
+    position: absolute; inset: 0;
+  }
+  /* Retratos/verticales: enfocar hacia arriba */
+  .foto-placeholder.portrait img { object-position: center top; }
+  .foto-label {
+    position: relative; z-index: 2;
+    background: rgba(26,58,92,0.82);
+    color: white; border-radius: 10px;
+    padding: 8px 14px; font-size: 0.73rem;
+    font-weight: 700; line-height: 1.5;
+    pointer-events: none; backdrop-filter: blur(4px);
+    max-width: 88%; border: 1.5px dashed rgba(255,255,255,0.45);
+  }
+  /* auto-ocultar label y borde cuando hay imagen */
+  .foto-placeholder:has(img) { border: none; background: transparent; }
+  .foto-placeholder:has(img) .foto-label { display: none; }
+
+  /* Hero bg */
+  .hero-foto-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-foto-bg img { width:100%;height:100%;object-fit:cover;opacity:0.28;display:block; }
+  .hero-foto-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,58,92,0.72) 0%, rgba(45,110,62,0.55) 100%);
+  }
+  .hero-foto-bg .foto-label {
+    position: absolute; bottom: 96px; left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* Fotos de columna: usar dimensiones del contenedor correctamente */
+  .equipo-foto-col.foto-placeholder,
+  .propuesta-foto-col.foto-placeholder,
+  .contacto-foto.foto-placeholder {
+    display: block; /* override flex del placeholder genérico */
+  }
+  .equipo-foto-col img,
+  .propuesta-foto-col img,
+  .contacto-foto img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .equipo-foto-col img { object-position: center 20%; }
+  .propuesta-foto-col img { object-position: center center; }
+  .contacto-foto img { object-position: center top; }
+
+  /* Propuesta: layout dos columnas */
+  .propuesta-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2.5rem; align-items: stretch; margin-top: 2.5rem;
+  }
+  .propuesta-left { display: flex; flex-direction: column; gap: 1.5rem; }
+  .propuesta-foto-col {
+    border-radius: 20px; overflow: hidden;
+    height: 100%; min-height: 520px;
+    position: sticky; top: 90px;
+    align-self: start;
+  }
+  .propuesta-foto-col img { height: 100%; width: 100%; object-fit: cover; object-position: center center; position: absolute; inset: 0; }
+
+  /* Equipo: roles en grid simple, foto abajo ancho completo */
+  .equipo-layout {
+    margin-top: 2.5rem;
+  }
+  .equipo-foto-col {
+    border-radius: 20px; overflow: hidden;
+    height: 100%; min-height: 520px;
+    position: sticky; top: 90px;
+    align-self: start;
+  }
+  /* Foto maestras — sin recorte, imagen completa centrada */
+  .maestras-foto-banner {
+    border-radius: 20px;
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .maestras-foto-banner img {
+    position: static;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 20px;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .maestras-foto-banner img { max-height: 400px; }
+  }
+
+  /* Contacto layout con foto lateral */
+  .contacto-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2.5rem; align-items: stretch; margin-top: 2rem;
+  }
+  .contacto-foto {
+    border-radius: 20px; overflow: hidden;
+    height: 100%; min-height: 500px;
+    position: sticky; top: 90px;
+    align-self: start;
+  }
+  .contacto-foto img { height: 100%; width: 100%; object-fit: cover; object-position: center top; position: absolute; inset: 0; }
+
+  @media (max-width: 768px) {
+    .contacto-layout { grid-template-columns: 1fr; }
+    .contacto-foto { min-height: 300px; height: 300px; position: static; }
+    .propuesta-layout { grid-template-columns: 1fr; }
+    .propuesta-foto-col { min-height: 300px; height: 300px; position: static; }
+    .equipo-layout { margin-top: 1.5rem; }
+    .equipo-foto-col { min-height: 300px; height: 300px; position: static; }
+    .maestras-foto-banner { height: 240px; }
+    .roles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .building-foto {
+  height: 220px;
+  position: relative;
+}
+.building-foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center center;
+  display: block;
+}
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nosotros-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .valores-grid { grid-template-columns: 1fr 1fr; }
+    .materias-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 3.5rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-footer-row { flex-direction: column; align-items: stretch; }
+    .form-submit { width: 100%; text-align: center; }
+    .ig-feed { grid-template-columns: repeat(2, 1fr); }
+    .form-wrap { padding: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .valores-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .ig-feed { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Logo Jardín Niño Jesús" style="width:44px;height:44px;object-fit:contain;border-radius:6px;">
+    <div class="brand">Jardín Niño Jesús<br><small style="font-weight:600;font-size:0.72rem;color:var(--verde);">Saladillo · Desde 1944</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#propuesta">Propuesta</a></li>
+    <li><a href="#valores">Valores</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#contacto" class="nav-cta">Inscripciones</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-foto-bg foto-placeholder">
+    <img src="hero.jpeg" alt="Chicos del Jardín Niño Jesús"> 
+  </div>
+
+  <div class="bubbles">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+  </div>
+  <div class="stars">
+    <svg class="star" style="top:14%;left:7%;animation-delay:0s" width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 2L13.5 9H21L15 13L17.5 20L12 16L6.5 20L9 13L3 9H10.5Z"/></svg>
+    <svg class="star" style="top:24%;right:11%;animation-delay:1s" width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><circle cx="12" cy="12" r="10"/></svg>
+    <svg class="star" style="top:64%;left:14%;animation-delay:2s" width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 2L13.5 9H21L15 13L17.5 20L12 16L6.5 20L9 13L3 9H10.5Z"/></svg>
+    <svg class="star" style="top:74%;right:7%;animation-delay:0.5s" width="8" height="8" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><circle cx="12" cy="12" r="10"/></svg>
+    <svg class="star" style="top:44%;left:3%;animation-delay:1.5s" width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,0.35)"><path d="M12 2L13.5 9H21L15 13L17.5 20L12 16L6.5 20L9 13L3 9H10.5Z"/></svg>
+    <svg class="star" style="top:34%;right:4%;animation-delay:2.5s" width="8" height="8" viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)"><circle cx="12" cy="12" r="10"/></svg>
+    <svg class="star" style="top:80%;left:45%;animation-delay:3s" width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M12 2L13.5 9H21L15 13L17.5 20L12 16L6.5 20L9 13L3 9H10.5Z"/></svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:5px;"><path d="M12 2L15 9H22L16 13.5L18.5 21L12 16.5L5.5 21L8 13.5L2 9H9Z"/></svg>
+      Institución Católica · DIEGEP 2634
+    </div>
+    <div class="hero-shield-wrap">
+      <img src="logo.png" alt="Logo Jardín Niño Jesús" style="width:82px;height:82px;object-fit:contain;">
+    </div>
+    <h1>Jardín de Infantes<br><span class="accent">Niño Jesús</span></h1>
+    <p class="subtitle">Un espacio de amor, aprendizaje y fe para los más pequeños<br>de Saladillo, Buenos Aires</p>
+    <div class="hero-desde">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Formando niños felices desde 1944
+    </div>
+    <div class="hero-buttons">
+      <a href="#contacto" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Inscribí a tu hijo/a
+      </a>
+      <a href="#nosotros" class="btn-secondary">Conocé más ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#2d6e3e"/>
+    </svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">+80</span><span class="stat-label">años de historia</span></div>
+    <div class="stat"><span class="stat-num">138</span><span class="stat-label">alumnos</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">secciones</span></div>
+    <div class="stat"><span class="stat-num">+18</span><span class="stat-label">profesionales</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">subvención estatal</span></div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+  <div class="container">
+    <div class="nosotros-grid">
+
+      <div class="reveal">
+        <div class="building-card">
+          <div class="building-foto foto-placeholder">
+            <img src="frente-jardin.jpeg" alt="Fachada del Jardín Niño Jesús">
+          </div>
+          <div class="building-card-footer">
+            <div class="pin-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <p>Belgrano 2999, Saladillo<br>Buenos Aires, Argentina</p>
+          </div>
+        </div>
+
+        <div class="history-list">
+          <div class="history-item">
+            <span class="history-year">1944</span>
+            <p class="history-desc">La Hermana Catalina crea la primera sala de Preescolar con orientación católica.</p>
+          </div>
+          <div class="history-item">
+            <span class="history-year">1986</span>
+            <p class="history-desc">Reconocimiento oficial como "Niño Jesús" — Registro 498 de Saladillo.</p>
+          </div>
+          <div class="history-item">
+            <span class="history-year">1999</span>
+            <p class="history-desc">Seis grupos en funcionamiento. 100% subvención estatal desde diciembre de 1998.</p>
+          </div>
+          <div class="history-item">
+            <span class="history-year">Hoy</span>
+            <p class="history-desc">138 alumnos, equipo docente completo e inglés curricular para las salas de 5 años.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nosotros-text reveal">
+        <div>
+          <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+        Quiénes somos
+      </div>
+          <h2 class="section-title">Un jardín con <span class="verde">corazón</span> desde hace más de 80 años</h2>
+          <p class="section-lead">Somos una institución educativa católica, propiedad del Obispado de Azul, que desde 1944 acompaña el crecimiento de los niños y niñas de Saladillo con amor, profesionalismo y fe.</p>
+        </div>
+        <p style="color:var(--texto-claro);line-height:1.8;font-size:0.93rem;">
+          Nuestro proyecto educativo pone al niño en el centro, garantizando el derecho a jugar, a aprender y a crecer en un ambiente afectivo que involucra a las familias como protagonistas. Nos guiamos por los valores del Evangelio y por el Diseño Curricular de la Provincia de Buenos Aires.
+        </p>
+        <div class="info-chips">
+          <div class="chip">
+            <div class="chip-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <strong>Obispado de Azul</strong>
+            <small>Monseñor Hugo Salaberry</small>
+          </div>
+          <div class="chip blue">
+            <div class="chip-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+            <strong>DIEGEP 2634</strong>
+            <small>CEC 02-35 · Reconocido</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<section class="mision-vision" id="mision">
+  <div class="container">
+    <div style="text-align:center;position:relative;">
+      <div class="section-tag" style="background:rgba(245,200,66,0.14);color:var(--amarillo);border-color:rgba(245,200,66,0.28);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        Nuestra identidad
+      </div>
+      <h2 class="section-title" style="color:white;">Misión &amp; <span style="color:var(--amarillo);">Visión</span></h2>
+    </div>
+    <div class="mv-grid reveal">
+      <div class="mv-card">
+        <div class="mv-icon g"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h3>Misión</h3>
+        <p>Como Comunidad Educativa Católica, brindamos a nuestros estudiantes una educación de calidad que desarrolla al máximo sus capacidades cognitivas y sociales, en un ambiente afectivo que involucra a las familias. Formamos alumnos con competencias, conocimiento y autonomía emocional.</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon y"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Visión</h3>
+        <p>Ser un jardín de infantes de referencia en la comunidad, reconocido por su excelencia educativa, su compromiso con la formación en valores, y su capacidad para promover la inclusión y la interculturalidad. Inspirado en Jesús amigo, formamos niños y niñas felices, seguros de sí mismos y solidarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA -->
+<section class="propuesta" id="propuesta">
+  <div class="container">
+    <div class="propuesta-intro reveal">
+      <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+        Lo que ofrecemos
+      </div>
+      <h2 class="section-title">Propuesta <span class="verde">educativa</span> integral</h2>
+      <p class="section-lead" style="margin:0 auto;">Combinamos áreas curriculares con disciplinas especiales para garantizar el desarrollo cognitivo, motriz, social y espiritual de cada niño y niña.</p>
+    </div>
+
+    <div class="propuesta-layout">
+
+      <!-- Columna izquierda: tarjetas -->
+      <div class="propuesta-left">
+        <div class="materias-grid reveal">
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+        <h4>Música</h4>
+        <p>2 maestras especializadas para el desarrollo auditivo y la expresión musical</p>
+      </div>
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+        <h4>Educación Física</h4>
+        <p>Psicomotricidad y desarrollo corporal con profesor especializado</p>
+      </div>
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1-3 4-3 4 3 4 3"/><path d="M9 17c1-1 3-1.5 6 0"/></svg></span>
+        <h4>Expresión Corporal</h4>
+        <p>Arte y movimiento para potenciar la creatividad de los más pequeños</p>
+      </div>
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg></span>
+        <h4>Inglés</h4>
+        <p>Para salas de 5 años · 1 hora semanal extraescolar con docente titulado</p>
+      </div>
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg></span>
+        <h4>Formación Católica</h4>
+        <p>Valores del Evangelio integrados en la vida cotidiana del jardín</p>
+      </div>
+      <div class="materia-card">
+        <span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="1.8" width="36" height="36"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h4>Orientación Escolar</h4>
+        <p>Acompañamiento psicopedagógico personalizado para cada alumno/a</p>
+      </div>
+    </div>
+
+    <div class="ingles-banner reveal">
+      <div style="font-size:3rem;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div>
+        <h3>¡Inglés para las salas de 5 años!</h3>
+        <p>Las secciones de tercera tienen inglés fuera de la carga horaria establecida. Sección A los <strong>martes</strong> y Sección B los <strong>miércoles</strong>, de 17:00 a 17:50 hs.</p>
+      </div>
+    </div>
+      </div><!-- /propuesta-left -->
+
+      <!-- Columna derecha: foto vertical -->
+      <div class="propuesta-foto-col foto-placeholder reveal">
+        <img src="propuesta.jpeg" alt="Actividades en el jardín">
+      </div>
+
+    </div><!-- /propuesta-layout -->
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores" id="valores">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 3rem;">
+      <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Nuestros pilares
+      </div>
+      <h2 class="section-title">Valores que <span class="verde">nos guían</span></h2>
+      <p class="section-lead" style="margin:0 auto;">Formamos personas íntegras con una educación basada en el respeto, la inclusión y la búsqueda del bien común.</p>
+    </div>
+    <div class="valores-grid reveal">
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Inclusión</h4>
+        <p>Garantizamos la participación y el aprendizaje de todos los niños y niñas, respetando sus diferencias y necesidades individuales.</p>
+      </div>
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Amor al prójimo</h4>
+        <p>Inspirados en el Evangelio, construimos relaciones positivas, respetuosas y solidarias entre toda la comunidad educativa.</p>
+      </div>
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Creatividad</h4>
+        <p>Fomentamos el pensamiento crítico, la autonomía y la expresión creativa a través de propuestas pedagógicas innovadoras.</p>
+      </div>
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Familia</h4>
+        <p>Las familias son protagonistas del proceso educativo. Trabajamos juntos para fortalecer el vínculo entre el hogar y el jardín.</p>
+      </div>
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Interculturalidad</h4>
+        <p>Promovemos el respeto y la valoración de la diversidad cultural, la igualdad de género y la educación ambiental integral.</p>
+      </div>
+      <div class="valor-card">
+        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Excelencia</h4>
+        <p>Todo nuestro personal posee título habilitante y se capacita de manera continua para garantizar educación de calidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo" id="equipo">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Nuestro equipo
+      </div>
+      <h2 class="section-title">Un equipo <span class="verde">dedicado</span></h2>
+      <p class="section-lead">Todos nuestros docentes poseen título habilitante y trabajan con profesionalidad, usando estrategias acordes a cada etapa del desarrollo infantil.</p>
+    </div>
+
+    <div class="equipo-layout">
+      <!-- Grid de roles — ancho completo ahora -->
+      <div class="roles-grid reveal">
+        <div class="rol-card"><span class="rol-num">2</span><div class="rol-name">Representantes legales</div></div>
+        <div class="rol-card"><span class="rol-num">1</span><div class="rol-name">Directora</div></div>
+        <div class="rol-card"><span class="rol-num">6</span><div class="rol-name">Docentes de sección</div></div>
+        <div class="rol-card"><span class="rol-num">3</span><div class="rol-name">Preceptoras</div></div>
+        <div class="rol-card"><span class="rol-num">1</span><div class="rol-name">Orientadora escolar</div></div>
+        <div class="rol-card"><span class="rol-num">2</span><div class="rol-name">Maestras de Música</div></div>
+        <div class="rol-card"><span class="rol-num">1</span><div class="rol-name">Prof. Ed. Física</div></div>
+        <div class="rol-card"><span class="rol-num">1</span><div class="rol-name">Prof. Inglés</div></div>
+      </div>
+    </div><!-- /equipo-layout -->
+
+    <!-- Foto maestras: horizontal, ancho completo -->
+    <div class="maestras-foto-banner reveal">
+      <img src="maestras.jpeg" alt="Maestras del Jardín Niño Jesús">
+    </div>
+  </div>
+</section>
+
+<!-- SECCIONES -->
+<section class="secciones" id="secciones">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Organización
+      </div>
+      <h2 class="section-title">Nuestras <span class="verde">salas</span></h2>
+      <p class="section-lead" style="margin:0 auto 0.5rem;">6 secciones en tres niveles, con grupos reducidos para una atención personalizada y cuidadosa.</p>
+    </div>
+    <div class="salas-wrap reveal">
+      <div class="sala">
+        <span class="sala-num">2</span>
+        <div class="sala-label">Sala de 3 años</div>
+        <div class="sala-sub">Primeras secciones</div>
+      </div>
+      <div class="sala azul">
+        <span class="sala-num">2</span>
+        <div class="sala-label">Sala de 4 años</div>
+        <div class="sala-sub">Segundas secciones</div>
+      </div>
+      <div class="sala gold">
+        <span class="sala-num">2</span>
+        <div class="sala-label">Sala de 5 años</div>
+        <div class="sala-sub">Terceras secciones · Inglés</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;color:var(--texto-claro);font-size:0.88rem;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--texto-claro)" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <strong>138 alumnos</strong> distribuidos en 6 secciones · Matrículas sujetas a disponibilidad
+    </p>
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section class="instagram-section" id="instagram">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="background:linear-gradient(135deg,rgba(240,148,51,0.12),rgba(188,24,136,0.12));color:#c13584;border-color:rgba(188,24,136,0.2);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:5px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Redes sociales
+      </div>
+      <h2 class="section-title">Seguinos en <span class="ig-gradient">Instagram</span></h2>
+      <p class="section-lead" style="margin:0 auto 2.5rem;">Mirá el día a día del jardín, las actividades, actos y momentos especiales que compartimos con nuestra comunidad.</p>
+    </div>
+
+    <div class="reveal ig-widget-wrap">
+      <behold-widget feed-id="iCFCKPZYfYB3dPkuCnL5"></behold-widget>
+<script>
+  (() => {
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";d.head.append(s);
+  })();
+</script>
+
+      <!-- Fallback visible mientras no está configurado el widget -->
+      <div class="ig-setup-notice" id="igSetupNotice">
+        <div class="ig-setup-inner">
+          <div style="margin-bottom:1rem;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c13584" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h4>Feed de Instagram</h4>
+          <p>
+            Para mostrar las publicaciones reales del jardín, seguí estos pasos:
+          </p>
+          <ol>
+            <li>Entrá a <a href="https://behold.so" target="_blank" rel="noopener"><strong>behold.so</strong></a> (gratuito)</li>
+            <li>Conectá la cuenta <strong>@jardinninojesus.saladillo</strong></li>
+            <li>Copiá el <code>feed-id</code> que te dan</li>
+            <li>Reemplazalo en el código HTML donde dice <code>REEMPLAZAR_CON_TU_FEED_ID</code></li>
+          </ol>
+          <a href="https://www.instagram.com/jardinninojesus.saladillo/" target="_blank" rel="noopener" class="ig-follow-btn" style="margin-top:1.5rem;display:inline-flex;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Ver Instagram mientras tanto
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:2rem;">
+      <a href="https://www.instagram.com/jardinninojesus.saladillo/" target="_blank" rel="noopener" class="ig-follow-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @jardinninojesus.saladillo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Behold widget script -->
+<script type="module" src="https://w.behold.so/widget.js"></script>
+<script>
+  // Mostrar el aviso de setup si el widget de Behold no cargó posts reales
+  window.addEventListener('load', () => {
+    const widget = document.querySelector('behold-widget');
+    const notice = document.getElementById('igSetupNotice');
+    if (!widget || widget.getAttribute('feed-id') === 'REEMPLAZAR_CON_TU_FEED_ID') {
+      if (notice) notice.style.display = 'flex';
+      if (widget) widget.style.display = 'none';
+    } else {
+      if (notice) notice.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- INSCRIPCIONES + CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Inscripciones
+      </div>
+      <h2 class="section-title">¿Querés <span style="color:var(--amarillo);">inscribir</span> a tu hijo/a?</h2>
+      <p class="section-lead">Completá el formulario y nos ponemos en contacto con vos a la brevedad. También podés llamarnos o escribirnos directamente.</p>
+    </div>
+
+    <!-- Info cards -->
+    <div class="contact-cards reveal">
+      <a class="contact-card" href="tel:023444335475">
+        <span class="c-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <strong>Teléfono / Fax</strong>
+        <span>02344 - 433475</span>
+      </a>
+      <a class="contact-card" href="tel:02344548535">
+        <span class="c-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+        <strong>Celular</strong>
+        <span>2344 - 548535</span>
+      </a>
+      <a class="contact-card" href="mailto:inicial@injsaladillo.edu.ar">
+        <span class="c-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <strong>Email</strong>
+        <span>inicial@injsaladillo.edu.ar</span>
+      </a>
+      <a class="contact-card" href="https://maps.google.com/?q=Belgrano+2999+Saladillo+Buenos+Aires" target="_blank" rel="noopener">
+        <span class="c-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <strong>Dirección</strong>
+        <span>Belgrano 2999, Saladillo</span>
+      </a>
+    </div>
+
+    <!-- FORMULARIO + FOTO -->
+    <div class="contacto-layout">
+
+      <div class="contacto-foto foto-placeholder portrait reveal">
+        <img src="contacto.jpeg" alt="Familias del Jardín Niño Jesús">
+      </div>
+
+      <!-- FORMULARIO -->
+      <div class="form-wrap reveal">
+      <div class="form-header">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Formulario de Inscripción
+        </h3>
+        <p>Completá los datos y te contactamos a la brevedad</p>
+      </div>
+
+      <!-- Estado: éxito -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--amarillo)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4>¡Mensaje enviado!</h4>
+        <p>Recibimos tu consulta. Nos ponemos en contacto con vos a la brevedad. ¡Gracias por elegir el Jardín Niño Jesús!</p>
+      </div>
+
+      <div id="formBody">
+        <!-- Fila 1 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre_padre">Nombre y apellido del padre/madre/tutor *</label>
+            <input type="text" id="nombre_padre" placeholder="Ej: María González" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono de contacto *</label>
+            <input type="tel" id="telefono" placeholder="Ej: 2344-123456" required>
+          </div>
+        </div>
+
+        <!-- Fila 2 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email_padre">Email *</label>
+            <input type="email" id="email_padre" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="nombre_nino">Nombre del niño/a *</label>
+            <input type="text" id="nombre_nino" placeholder="Ej: Juanita" required>
+          </div>
+        </div>
+
+        <!-- Fila 3 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha_nac">Fecha de nacimiento del niño/a *</label>
+            <input type="date" id="fecha_nac" required>
+          </div>
+          <div class="form-group">
+            <label for="sala">Sala a la que aplicaría</label>
+            <select id="sala">
+              <option value="">— Seleccioná —</option>
+              <option value="Sala de 3 años (Primera sección)">Sala de 3 años (Primera sección)</option>
+              <option value="Sala de 4 años (Segunda sección)">Sala de 4 años (Segunda sección)</option>
+              <option value="Sala de 5 años (Tercera sección)">Sala de 5 años (Tercera sección)</option>
+              <option value="No lo sé aún">No lo sé aún</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+          <label for="mensaje">Consulta o mensaje adicional</label>
+          <textarea id="mensaje" rows="3" placeholder="¿Tenés alguna pregunta o información adicional que quieras compartir?"></textarea>
+        </div>
+
+        <div class="form-footer-row">
+          <p class="form-note">* Campos obligatorios. Tu consulta llegará a <strong>inicial@injsaladillo.edu.ar</strong></p>
+          <button class="form-submit" id="submitBtn" onclick="enviarFormulario()">
+            <span id="btnText">Enviar consulta
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-left:4px;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </span>
+            <span id="btnLoading" style="display:none;">Enviando...</span>
+          </button>
+        </div>
+
+        <div class="form-error" id="formError">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:5px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Hubo un error al enviar. Por favor escribinos directamente a <a href="mailto:inicial@injsaladillo.edu.ar">inicial@injsaladillo.edu.ar</a>
+        </div>
+      </div><!-- /formBody -->
+      </div><!-- /form-wrap -->
+
+    </div><!-- /contacto-layout -->
+
+  </div><!-- /container -->
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Jardín de Infantes "Niño Jesús"</strong>
+    <span class="sep">|</span>
+    DIEGEP 2634 · CEC 02-35
+    <span class="sep">|</span>
+    Belgrano 2999, Saladillo, Buenos Aires
+  </p>
+  <p>Propiedad del Obispado de Azul · Monseñor Hugo Salaberry</p>
+  <p style="font-size:0.74rem;opacity:0.38;margin-top:0.4rem;">© 2026 Instituto Niño Jesús · Todos los derechos reservados</p>
+  <p style="font-size:0.72rem;opacity:0.3;margin-top:0.3rem;">Desarrollado por <a href="https://ctrlstudiodev.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">ctrlstudiodev.com</a></p>
+</footer>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ── EmailJS config ──────────────────────────────────────────────
+  // INSTRUCCIONES PARA ACTIVAR EL ENVÍO DE EMAILS:
+  // 1. Crear cuenta gratuita en https://www.emailjs.com
+  // 2. Crear un "Email Service" (Gmail u otro) → copiar el Service ID
+  // 3. Crear un "Email Template" con las variables: {{nombre_padre}},
+  //    {{nombre_nino}}, {{fecha_nac}}, {{sala}}, {{telefono}},
+  //    {{email_padre}}, {{mensaje}}
+  //    Configurar "To email" = inicial@injsaladillo.edu.ar
+  // 4. Copiar el Public Key desde Account > API Keys
+  // 5. Reemplazar los valores de abajo:
+  const EMAILJS_PUBLIC_KEY  = 'TU_PUBLIC_KEY';   // ← reemplazar
+  const EMAILJS_SERVICE_ID  = 'TU_SERVICE_ID';   // ← reemplazar
+  const EMAILJS_TEMPLATE_ID = 'TU_TEMPLATE_ID';  // ← reemplazar
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  function enviarFormulario() {
+    const nombre_padre = document.getElementById('nombre_padre').value.trim();
+    const email_padre  = document.getElementById('email_padre').value.trim();
+    const telefono     = document.getElementById('telefono').value.trim();
+    const nombre_nino  = document.getElementById('nombre_nino').value.trim();
+    const fecha_nac    = document.getElementById('fecha_nac').value;
+
+    // Validación básica
+    if (!nombre_padre || !email_padre || !telefono || !nombre_nino || !fecha_nac) {
+      alert('Por favor completá todos los campos obligatorios (*)');
+      return;
+    }
+
+    const btn      = document.getElementById('submitBtn');
+    const btnText  = document.getElementById('btnText');
+    const btnLoad  = document.getElementById('btnLoading');
+    const errDiv   = document.getElementById('formError');
+
+    btn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoad.style.display = 'inline';
+    errDiv.style.display  = 'none';
+
+    const params = {
+      nombre_padre,
+      email_padre,
+      telefono,
+      nombre_nino,
+      fecha_nac,
+      sala:    document.getElementById('sala').value    || 'No especificada',
+      mensaje: document.getElementById('mensaje').value || 'Sin mensaje adicional',
+    };
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+      .then(() => {
+        document.getElementById('formBody').style.display    = 'none';
+        document.getElementById('formSuccess').style.display = 'flex';
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        errDiv.style.display = 'block';
+        btn.disabled   = false;
+        btnText.style.display = 'inline';
+        btnLoad.style.display = 'none';
+      });
+  }
+
+  // ── Scroll reveal ───────────────────────────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.materias-grid, .valores-grid, .roles-grid, .mv-grid').forEach(grid => {
+    [...grid.children].forEach((child, i) => { child.style.transitionDelay = `${i * 0.07}s`; });
+  });
+</script>
+</body>
+</html>
